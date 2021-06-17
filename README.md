@@ -1,0 +1,2 @@
+# VScoin
+My own coin!!!!!!
