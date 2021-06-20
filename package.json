@@ -1,5 +1,5 @@
 {
-  "name": "vscoin",
+  "name": "vcoin",
   "version": "1.0.0",
   "description": "coin",
   "main": "src/Blockchain.js",
