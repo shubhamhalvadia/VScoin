@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/shubhamhalvadia/VScoin.git"
+    "url": "git+https://github.com/shubhamhalvadia/Vcoin.git"
   },
   "keywords": [
     "blockchain",
@@ -22,7 +22,7 @@
   "author": "Shubham Halvadia",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/shubhamhalvadia/VScoin/issues"
+    "url": "https://github.com/shubhamhalvadia/Vcoin/issues"
   },
-  "homepage": "https://github.com/shubhamhalvadia/VScoin#readme"
+  "homepage": "https://github.com/shubhamhalvadia/Vcoin#readme"
 }
