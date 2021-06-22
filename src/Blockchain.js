@@ -7,6 +7,7 @@ class Transaction{
         this.senderAddress = senderAddress;
         this.recieverAddress = recieverAddress;
         this.amount = amount;
+        this.timestamp = Date.now();
     }
 
     calculateHash(){
@@ -37,7 +38,7 @@ class Transaction{
 
 class Block{
     constructor(timestamp, transactions, previousHash = ''){
-        this.timesptap = timestamp;
+        this.timestamp = timestamp;
         this.transactions = transactions;
         this. previousHash = previousHash;
         this.hash = this.calculateHash();
@@ -76,7 +77,7 @@ class Blockchain{
     }
     
     GenesisBlock(){
-        return new Block("17/06/2021","Genesis block","0")
+        return new Block(Date.parse('17-06-2021'),"Genesis block","0");
     }
 
     getlatestblock(){
@@ -84,15 +85,16 @@ class Blockchain{
     }
 
     minePendingTransaction(miningRewardAddress){
-        let block = new Block(Date.now(), this.pendingTransactions);
+        const rewardTx = new Transaction(null, miningRewardAddress, this.miningRewards);
+        this.pendingTransactions.push(rewardTx);
+    
+        const block = new Block(Date.now(), this.pendingTransactions, this.getlatestblock().hash);
         block.mineBlock(this.difficulty);
 
         console.log('Block successufully mined!');
         this.chain.push(block);
 
-        this.pendingTransactions = [
-            new Transaction(null, miningRewardAddress, this.miningRewards)
-        ];
+        this.pendingTransactions = [];
     }
 
     addTransaction(transaction){
@@ -121,14 +123,15 @@ class Blockchain{
                 }
             }
         }
+        console.log(balance);
         return balance;
     }
 
-    addBlock(newBlock){
-        newBlock.previousHash = this.getlatestblock().hash;
-        newBlock.mineBlock(this.difficulty);
-        this.chain.push(newBlock);
-    }
+    //addBlock(newBlock){
+    //    newBlock.previousHash = this.getlatestblock().hash;
+    //    newBlock.mineBlock(this.difficulty);
+    //    this.chain.push(newBlock);
+    //}
 
     isChailValid(){
         for(let i =1; i< this.chain.length; i++){
